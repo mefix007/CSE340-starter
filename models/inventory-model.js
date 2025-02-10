@@ -27,7 +27,7 @@ async function getInventoryByClassificationId(classification_id) {
 
 /* ***************************
  *  Get all inventory items and inventory_name by inventory_id
- * ************************** */
+ * *************** *********** */
 async function getVehicleById(inv_id) {
   try {
       const result = await pool.query('SELECT * FROM inventory WHERE inv_id = $1', [inv_id]);
