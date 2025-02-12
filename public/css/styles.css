@@ -142,7 +142,7 @@ h3,p{
 }
 #inv-display{
   display: grid;
-  max-width: auto;
+  /* max-width: auto; */
   /* margin: auto; */
 }
 #inv-display li{
@@ -152,8 +152,8 @@ h3,p{
 #inv-display img{
   padding: 7px;
   margin: 0em;
-  width: 14em;
-  height: 10em;
+  width: 100%;
+  height: 100%;
 }
 
 .car_img{
