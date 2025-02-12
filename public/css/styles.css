@@ -1,4 +1,24 @@
-/******* Change Box Model ***************/
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Playfair+Display:ital@0;1&display=swap');
+
+
+/* ADDED FOR CONVENIENCE */
+:root {
+  --primary-background: #fff;
+  --nav: #110648;
+  --setup: #4adec8;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
 #wrapper {
   box-sizing: border-box;
   top: auto;
@@ -7,22 +27,43 @@
   margin: 0px;
 }
 
-header {
+#top-header {
   min-width: 90%;
   display: flex;
   justify-content: space-between;
   padding: 15px;
 }
 
-.siteName >a,
-#tools >a{
+#top-header a {
   text-decoration: none;
   color: rgb(25, 31, 48);
 }
 
-.siteName {
-  font-size: 2em;
+#top-header a:hover {
+  text-decoration: underline;
 }
+
+/* ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--main-accent);
+}
+
+ul li {
+  float: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li a {
+  display: block;
+  color: var(--secondary-accent);
+  text-align: center;
+  padding: 14px 16px;
+} */
 nav,
 ul,
 li{
@@ -39,6 +80,7 @@ li{
 nav a {
   color: bisque;
 }
+
 h1{
   color: rgb(25, 31, 48);
   font-size: x-large;
@@ -103,6 +145,17 @@ h3,p{
   max-width: auto;
   /* margin: auto; */
 }
+#inv-display li{
+  height: 10em;
+  border: groove;
+}
+#inv-display img{
+  padding: 7px;
+  margin: 0em;
+  width: 14em;
+  height: 10em;
+}
+
 .car_img{
   height: auto;
   width: auto;
@@ -123,8 +176,175 @@ h3,p{
   width: -webkit-fill-available;
 }
 
-/* Larger Views ******************************/
-@media (min-width: 980px) {
+/* home page*/
+#proimage {
+  position: relative;
+}
+
+#prowords-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: var(--main-accent);
+}
+
+button {
+  background-color: var(--main-accent);
+  border: none;
+  padding: 1rem;
+  font-size: 16px;
+}
+
+#upgrades-container {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+
+#about-delorean {
+  display: flex;
+  flex-flow: column-reverse nowrap;
+}
+
+#reviews li {
+  margin: 10px;
+}
+/*classification grid view*/
+/* #inv-display {
+  display: flex;
+  flex-flow: column nowrap;
+} */
+
+/* #inv-display > li {
+  background-color: var(--primary-background);
+  margin: 10px;
+  padding: 20px;
+} */
+.namePrice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/*vehicle detial view*/
+.vehicle-content {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.vehicle-content > div {
+  margin: 1px;
+  padding: 1px;
+}
+.vehicle-picture img{
+  width: -webkit-fill-available;
+}
+/* for the login form*/
+.form-container {
+  margin: 0 auto;
+  width: 60%;
+}
+form {
+  background-color: var(--primary-background);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(4, 32, 124, 0.3);
+  min-width: 300px;
+}
+form div {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input {
+  width: 50%;
+  padding: 0.5rem;
+  border: 1px solid var(--secondary-accent);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 50%;
+  padding: 0.75rem;
+  border: none;
+  background-color: var(--main-accent);
+  color: var(--secondary-accent);
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--secondary-accent);
+  color: var(--main-accent);
+}
+
+/* Center the registration link */
+p {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+a {
+  color: var(--secondary-accent);
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+  background-color: var(--main-accent);
+}
+
+input:required:invalid, input:focus:invalid {
+      border: 2px solid red;
+      background-color: #ffd6d6;
+}
+
+input:required:valid {
+  border: 2px solid green;
+  background-color: #e6ffe6;
+}
+/* error list view*/
+ol.notice{
+  color: red;
+  background-color: var(--primary-background);
+  list-style-type: square;
+}
+
+/* inventory management view */
+.inventory-management {
+  text-align: center;
+}
+@media only screen and (min-width: 768px) {
+  /* body { */
+  /* You could use a regular image, but went with gradients */
+    /* background-image: linear-gradient(45deg, #000 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #000 75%),
+    linear-gradient(45deg, transparent 75%, #000 75%),
+    linear-gradient(45deg, #000 25%, #fff 25%);
+    background-size: 100px 100px;
+    background-position: 0 0, 0 0, -50px -50px, 50px 50px;
+  } */
+
+  /* #wrapper { */
+  /* This is the blueish border around the desktop version */
+    /* border: 5px solid var(--main-accent);
+    border-radius: 10px;
+    margin: 1rem auto;
+    padding: 1vw;
+    width: 75vw;
+    max-width: 1200px;
+  }
+
+  ul li {
+    float: left;
+  } */
   #wrapper {
     padding: 3px; 
     box-sizing: border-box;
@@ -169,7 +389,7 @@ h3,p{
     width: 8em;
   }
   .gridview img{
-    width: 8em;
+    width: 7em;
     height: 6em;
     border-radius: 5px;
   }
@@ -186,6 +406,7 @@ h3,p{
     width: fit-content;
   }
   #inv-display{
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     min-width: 95%;
     justify-self: center;
@@ -194,8 +415,19 @@ h3,p{
     height: 10em;
     width: 15em;
   }
-
-  
-  
-
+  /* home page*/
+  #about-delorean {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  /*classification grid view*/
+  /* #inv-display {
+    display: flex;
+    flex-flow:row wrap;
+  } */
+  /*vehicle detial view*/
+  .vehicle-content {
+    display: flex;
+    flex-flow: row nowrap;
+  }
 }
