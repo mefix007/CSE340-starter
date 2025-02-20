@@ -1,0 +1,89 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+<% } else {
+    res.redirect('/account/Admin/')
+} %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+    <ol class="notice">
+        <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+        <%  }) %>
+    </ol>
+<% } %> 
+
+<main>
+    <section class="account-update">
+        <p>Update your account information below.</p>
+        <form action="/account/update" method="POST">
+            <input type="hidden" name="account_id" 
+            <% if(locals.account_id) { %> value="<%= locals.account_id %>"
+            <% } %>>
+            
+            <label for="account_firstname">First Name:</label>
+            <input type="text" name="account_firstname" id="account_firstname" value="<%= locals.account_firstname %>" required>
+        
+            <label for="account_lastname">Last Name:</label>
+            <input type="text" name="account_lastname" id="account_lastname" value="<%= locals.account_lastname %>" required>
+        
+            <label for="account_email">Email:</label>
+            <input type="email" name="account_email" id="account_email" value="<%= locals.account_email %>" required>
+        
+            <button type="submit">Update Account</button>
+        </form>        
+    </section>
+    <hr>
+    <section class="password-update">
+        <p>Use the form below to update your password. Your new password must:</p>
+        <ol>
+            <li>Be at least 12 characters long</li>
+            <li>Include at least one uppercase letter</li>
+            <li>Include at least one number</li>
+            <li>Include at least one special character</li>
+        </ol>
+        <form action="/account/update-password" method="POST">
+            <input type="hidden" name="account_id" 
+            <% if(locals.account_id) { %> value="<%= locals.account_id %>"
+            <% } %>>
+
+            <label for="new_password">New Password:</label>
+            <input type="password" name="new_password" id="new_password"  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required>
+            <div>
+                <button type="button" id="toggleNewPassword">Show Password</button>
+            </div>
+          
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" name="confirm_password" id="confirm_password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required>
+            <div>
+                <button type="button" id="toggleConfirmPassword">Show Password</button>
+            </div>
+
+            <button type="submit">Update Password</button>
+          </form>        
+    </section>
+</main>
+<script>
+    function togglePassword(fieldId, buttonId) {
+    const inputField = document.getElementById(fieldId);
+    const toggleButton = document.getElementById(buttonId);
+
+    if (inputField && toggleButton) {
+        const isPasswordHidden = inputField.type === 'password';
+        inputField.type = isPasswordHidden ? 'text' : 'password';
+        toggleButton.textContent = isPasswordHidden ? 'Hide Password' : 'Show Password';
+    }
+}
+    // Attach event listeners
+    document.getElementById('toggleNewPassword').addEventListener('click', function () {
+        togglePassword('new_password', 'toggleNewPassword');
+    });
+
+    document.getElementById('toggleConfirmPassword').addEventListener('click', function () {
+        togglePassword('confirm_password', 'toggleConfirmPassword');
+    });
+</script>
+
+
+  

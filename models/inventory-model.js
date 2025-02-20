@@ -84,8 +84,7 @@ async function insertVehicle(
       inv_color,
       classification_id
     ])
-    // return true;
-    return data.rows[0];
+    return true;
 
   } catch (error) {
     console.error("model error: " + error)

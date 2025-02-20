@@ -36,7 +36,6 @@ app.use(session({
   saveUninitialized: true,
   name: 'sessionId',
 }))
-// console.log("SESSION_SECRET:", process.env.SESSION_SECRET);
 
 // Express Messages Middleware unit 4 activity
 app.use(require('connect-flash')())

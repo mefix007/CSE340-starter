@@ -150,5 +150,68 @@ Util.updateNav = async function () {
   global.nav = await Util.getNav(); // Regenerate the nav menu
 };
 
+/* ****************************************
+ * Middleware to Check Account Type
+ * Only "Employee" and "Admin" can access restricted views/actions
+ **************************************** */
+Util.checkAccountType = (req, res, next) => {
+  // Check if user is logged in
+  if (!res.locals.accountData) {
+    req.flash("error", "You must be logged in to access this page.");
+    return res.redirect("/account/login");
+  }
 
-module.exports = Util
+  // Extract account type
+  const { account_type } = res.locals.accountData;
+
+  // Allow only Employee or Admin
+  if (account_type === "Employee" || account_type === "Admin") {
+    return next();
+  } else {
+    req.flash("error", "Unauthorized access: Only Employee and Admin can perform this action.");
+    return res.redirect("/account/login");
+  }
+};
+
+/* ****************************************
+ * Middleware to Check Admin
+ * final enhancement
+ **************************************** */
+Util.checkAdmin = (req, res, next) => {
+  if (!res.locals.accountData) {
+    req.flash("notice", "You must be logged in to access this page.");
+    return res.redirect("/account/");
+  }
+  // Extract account type
+  const { account_type } = res.locals.accountData;
+  // Allow only Admin
+  if (account_type === "Admin") {
+    console.log("Admin access granted.");
+    return next();
+  } else {
+    req.flash("notice", "Unauthorized access: Only Admin can perform this action.");
+    return res.redirect("/account/login");
+  }
+};
+
+//final enhancement
+Util.buildAccountTypeList = async function (account_type = null) {
+  let accountTypes = ["Client", "Employee", "Admin"]; // Define available types
+  let accountTypeList =
+    '<select name="account_type" id="accountTypeList" required>';
+  accountTypeList += "<option value=''>Choose an Account Type</option>";
+
+  accountTypes.forEach((type) => {
+    accountTypeList += `<option value="${type}"`;
+    if (account_type != null && type == account_type) {
+      accountTypeList += " selected";
+    }
+    accountTypeList += `>${type}</option>`;
+  })
+
+  accountTypeList += "</select>";
+  console.log("Generated accountTypeList HTML:", accountTypeList); // Debugging log
+  return accountTypeList;
+}
+
+module.exports = Util 
