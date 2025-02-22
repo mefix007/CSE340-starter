@@ -392,4 +392,4 @@ async function adminDeleteAccount(req, res, next) {
 
 }
 
-module.exports = {buildLogin, buildRegister, registerAccount, loginAccount, accountManagement,logoutAccount,buildAccountManagement, buildUpdateAccount, updateAccountInfo, updatePassword, getAccountsJSON, adminManagement, adminBuildUpdateAccount, adminUpdateAccountInfo, adminUpdatePassword, adminBuildDeleteAccount, adminDeleteAccount}
+module.exports = {buildLogin, buildRegister, registerAccount, loginAccount, accountManagement, logoutAccount, buildAccountManagement, buildUpdateAccount, updateAccountInfo, updatePassword, getAccountsJSON, adminManagement, adminBuildUpdateAccount, adminUpdateAccountInfo, adminUpdatePassword, adminBuildDeleteAccount, adminDeleteAccount}
